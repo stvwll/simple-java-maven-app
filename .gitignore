@@ -12,21 +12,3 @@ buildNumber.properties
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
 
-language: java
-sudo: false
-jobs:
- include:
-  - stage:Tests
-    script: echo "`date` Unit Tests1" && sleep 1
-    name: "Integration Tests"
-  - stage: build
-    name: "Mvn build"
-    script: mvn package
-deploy:
- provider:releases
- api_key: "$API_KEY"
- file: "target/my-app-1.0-SMAPSNOT.jar"
- skip_cleanup: true
- on:
-  tag:true
-
