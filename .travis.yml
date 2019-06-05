@@ -1,17 +1,19 @@
 language: java
 sudo: false
 jobs:
- include:
-  - stage:Tests
+  include:
+  - stage: Tests
     script: echo "`date` Unit Tests1" && sleep 1
+    name: "Unit Tests"
+  - script:echo "`date` Integration-tests" && sleep 2
     name: "Integration Tests"
   - stage: build
     name: "Mvn build"
     script: mvn package
 deploy:
- provider:releases
+ provider: releases
  api_key: "$API_KEY"
  file: "target/my-app-1.0-SMAPSNOT.jar"
  skip_cleanup: true
  on:
-  tag:true
+  tag: true
