@@ -5,7 +5,7 @@ jobs:
   - stage: Tests
     script: echo "`date` Unit Tests1" && sleep 1
     name: "Unit Tests"
-  - script:echo "`date` Integration-tests" && sleep 2
+  - script: echo "`date` Integration-tests" && sleep 2
     name: "Integration Tests"
   - stage: build
     name: "Mvn build"
